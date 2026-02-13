@@ -1031,27 +1031,6 @@ struct NotificationPreferences: Codable {
 
 extension NotificationType: CaseIterable {}
 
-// MARK: - Scheduled Events (Calendar)
-
-struct ScheduledEvent: Codable, Identifiable {
-  let id: String
-  let title: String
-  let description: String?
-  let eventType: String
-  let scheduledAt: Date
-  let endAt: Date?
-  let allDay: Bool?
-  let recurrenceRule: String?
-  let targetType: String
-  let targetAgent: String?
-  let status: String
-  let lastFiredAt: Date?
-  let nextFireAt: Date?
-  let fireCount: Int?
-  let createdAt: Date?
-  let updatedAt: Date?
-}
-
 // MARK: - Calendar / Scheduled Events
 
 struct ScheduledEvent: Codable, Identifiable, Hashable {

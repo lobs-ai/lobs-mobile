@@ -14,7 +14,7 @@ struct ChatView: View {
                     showSessionPicker = true
                 } label: {
                     HStack {
-                        Text(viewModel.currentSession?.label ?? "Select Session")
+                        Text(viewModel.currentSession?.displayLabel ?? "Select Session")
                             .foregroundColor(.primary)
                         Spacer()
                         Image(systemName: "chevron.down")
@@ -85,21 +85,17 @@ struct ChatView: View {
 struct MessageBubble: View {
     let message: ChatMessage
     
-    var isUser: Bool {
-        message.role == .user
-    }
-    
     var body: some View {
         HStack {
-            if isUser {
+            if message.isFromUser {
                 Spacer()
             }
             
-            VStack(alignment: isUser ? .trailing : .leading, spacing: 4) {
+            VStack(alignment: message.isFromUser ? .trailing : .leading, spacing: 4) {
                 Text(message.content)
                     .padding(12)
-                    .background(isUser ? Color.blue : Color(.systemGray5))
-                    .foregroundColor(isUser ? .white : .primary)
+                    .background(message.isFromUser ? Color.blue : Color(.systemGray5))
+                    .foregroundColor(message.isFromUser ? .white : .primary)
                     .cornerRadius(16)
                 
                 Text(message.createdAt, style: .time)
@@ -107,7 +103,7 @@ struct MessageBubble: View {
                     .foregroundColor(.secondary)
             }
             
-            if !isUser {
+            if !message.isFromUser {
                 Spacer()
             }
         }
@@ -130,7 +126,7 @@ struct SessionPickerView: View {
                     } label: {
                         HStack {
                             VStack(alignment: .leading, spacing: 4) {
-                                Text(session.label ?? session.sessionKey)
+                                Text(session.displayLabel)
                                     .font(.headline)
                                 
                                 if let lastMessage = session.lastMessageAt {
