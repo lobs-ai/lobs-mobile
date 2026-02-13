@@ -15,11 +15,14 @@
 		312F6497863921645CD9627C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE04CB207FE1084E701035DA /* SettingsView.swift */; };
 		39369ABFAC05744258D33EEF /* LobsMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04D45378984545F7CC19D4 /* LobsMobileApp.swift */; };
 		60C5E82113E645D0B3152772 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354D4B9FC627160C2B61A4DC /* CalendarViewModel.swift */; };
+		61E595C3E4A495EB415CF3D4 /* MemoryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB9468CF56C190CC98E2531 /* MemoryModels.swift */; };
 		6F9B109A198FF1C846113054 /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCD4F2EED208C2AAD9F86FE /* APIModels.swift */; };
 		8358024BB5BBAC28EF419DAC /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BCFAF17DEC90EB28EEC307 /* TasksViewModel.swift */; };
 		861D5ECC8B8EF47C93DB906B /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375AD7C643B9B867FEA21BDA /* ChatViewModel.swift */; };
+		87F7BFD0F77A479C5E8B132E /* StatusModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255395E0F54E53D6BC817DFD /* StatusModels.swift */; };
 		9B9ECEA0D5A3FFBBEC30F157 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A147507CACDE4D4B038C59 /* ChatView.swift */; };
 		A5AFE7B587E9F435AB12808D /* InboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE6E9E6202CC6786FD4A3B5 /* InboxViewModel.swift */; };
+		AD0D054107B18C86512C2469 /* ChatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00353F5607CAF2FAC1029811 /* ChatModels.swift */; };
 		B28362218131034DBF60D338 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A22DB050E2A8076D627BB /* ChatService.swift */; };
 		B7AA4A9F081C5CD552DF4281 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729E55862FE4EEE1FA74C1BE /* CalendarView.swift */; };
 		CA970E41DDC17771C39D5199 /* MemoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B14371A8CF34C9BEC31A87 /* MemoryViewModel.swift */; };
@@ -28,7 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00353F5607CAF2FAC1029811 /* ChatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModels.swift; sourceTree = "<group>"; };
 		210EDEDC893D1DC85AD73B28 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		255395E0F54E53D6BC817DFD /* StatusModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModels.swift; sourceTree = "<group>"; };
 		28BCFAF17DEC90EB28EEC307 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		354D4B9FC627160C2B61A4DC /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		375AD7C643B9B867FEA21BDA /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
@@ -45,6 +50,7 @@
 		E1A147507CACDE4D4B038C59 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		EBE6E9E6202CC6786FD4A3B5 /* InboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewModel.swift; sourceTree = "<group>"; };
 		EC36A38B9A503DE446CF7932 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		ECB9468CF56C190CC98E2531 /* MemoryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryModels.swift; sourceTree = "<group>"; };
 		F1B14371A8CF34C9BEC31A87 /* MemoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryViewModel.swift; sourceTree = "<group>"; };
 		F90AE4161D931A2C054474DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +85,9 @@
 			children = (
 				BDCD4F2EED208C2AAD9F86FE /* APIModels.swift */,
 				210EDEDC893D1DC85AD73B28 /* APIService.swift */,
+				00353F5607CAF2FAC1029811 /* ChatModels.swift */,
+				ECB9468CF56C190CC98E2531 /* MemoryModels.swift */,
+				255395E0F54E53D6BC817DFD /* StatusModels.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -185,6 +194,7 @@
 				281BBF2DC44E4D272E003513 /* APIService.swift in Sources */,
 				B7AA4A9F081C5CD552DF4281 /* CalendarView.swift in Sources */,
 				60C5E82113E645D0B3152772 /* CalendarViewModel.swift in Sources */,
+				AD0D054107B18C86512C2469 /* ChatModels.swift in Sources */,
 				B28362218131034DBF60D338 /* ChatService.swift in Sources */,
 				9B9ECEA0D5A3FFBBEC30F157 /* ChatView.swift in Sources */,
 				861D5ECC8B8EF47C93DB906B /* ChatViewModel.swift in Sources */,
@@ -194,9 +204,11 @@
 				FF2CA2A2FDD9B07C16864ED0 /* InboxView.swift in Sources */,
 				A5AFE7B587E9F435AB12808D /* InboxViewModel.swift in Sources */,
 				39369ABFAC05744258D33EEF /* LobsMobileApp.swift in Sources */,
+				61E595C3E4A495EB415CF3D4 /* MemoryModels.swift in Sources */,
 				03894F8488DE33B5E4F1E6FC /* MemoryView.swift in Sources */,
 				CA970E41DDC17771C39D5199 /* MemoryViewModel.swift in Sources */,
 				312F6497863921645CD9627C /* SettingsView.swift in Sources */,
+				87F7BFD0F77A479C5E8B132E /* StatusModels.swift in Sources */,
 				F7E2C40BB0A83A4FA214D224 /* TasksView.swift in Sources */,
 				8358024BB5BBAC28EF419DAC /* TasksViewModel.swift in Sources */,
 			);

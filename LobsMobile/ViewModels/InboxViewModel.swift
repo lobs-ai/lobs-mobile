@@ -4,25 +4,27 @@ import Foundation
 class InboxViewModel: ObservableObject {
     @Published var items: [InboxItem] = []
     @Published var isLoading = false
+    @Published var error: String?
     
     func load(apiService: APIService?) async {
-        guard let apiService = apiService else { return }
+        guard let api = apiService else { return }
         
         isLoading = true
         defer { isLoading = false }
         
         do {
-            items = try await apiService.fetchInboxItems()
+            items = try await api.loadInboxItems()
         } catch {
-            print("Inbox load error: \(error)")
+            self.error = error.localizedDescription
         }
     }
     
     func markAsRead(_ itemId: String, apiService: APIService?) async {
-        guard let apiService = apiService else { return }
+        guard let api = apiService else { return }
         
         do {
-            try await apiService.markInboxItemRead(id: itemId)
+            try await api.markInboxItemRead(id: itemId)
+            // Update local state
             if let index = items.firstIndex(where: { $0.id == itemId }) {
                 items[index] = InboxItem(
                     id: items[index].id,
@@ -37,7 +39,7 @@ class InboxViewModel: ObservableObject {
                 )
             }
         } catch {
-            print("Mark as read error: \(error)")
+            self.error = error.localizedDescription
         }
     }
 }

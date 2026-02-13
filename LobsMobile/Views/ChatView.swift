@@ -86,7 +86,7 @@ struct MessageBubble: View {
     let message: ChatMessage
     
     var isUser: Bool {
-        message.role == "user"
+        message.role == .user
     }
     
     var body: some View {

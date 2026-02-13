@@ -4,6 +4,7 @@ import Foundation
 class CalendarViewModel: ObservableObject {
     @Published var events: [ScheduledEvent] = []
     @Published var isLoading = false
+    @Published var error: String?
     
     var groupedEvents: [Date: [ScheduledEvent]] {
         Dictionary(grouping: events) { event in
@@ -12,15 +13,15 @@ class CalendarViewModel: ObservableObject {
     }
     
     func load(apiService: APIService?) async {
-        guard let apiService = apiService else { return }
+        guard let api = apiService else { return }
         
         isLoading = true
         defer { isLoading = false }
         
         do {
-            events = try await apiService.fetchScheduledEvents(limit: 100)
+            events = try await api.fetchAllEvents(limit: 100)
         } catch {
-            print("Events load error: \(error)")
+            self.error = error.localizedDescription
         }
     }
     
@@ -31,10 +32,10 @@ class CalendarViewModel: ObservableObject {
         description: String?,
         apiService: APIService?
     ) async {
-        guard let apiService = apiService else { return }
+        guard let api = apiService else { return }
         
         do {
-            let newEvent = try await apiService.createScheduledEvent(
+            let newEvent = try await api.createScheduledEvent(
                 title: title,
                 eventType: type,
                 scheduledAt: scheduledAt,
@@ -43,7 +44,7 @@ class CalendarViewModel: ObservableObject {
             events.append(newEvent)
             events.sort { $0.scheduledAt < $1.scheduledAt }
         } catch {
-            print("Create event error: \(error)")
+            self.error = error.localizedDescription
         }
     }
 }

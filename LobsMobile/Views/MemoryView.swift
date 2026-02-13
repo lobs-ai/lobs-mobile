@@ -64,31 +64,40 @@ struct MemoryItemView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            if let title = memory.title {
-                Text(title)
+            HStack {
+                Text(memory.displayTitle)
                     .font(.headline)
+                Spacer()
+                Circle()
+                    .fill(memory.typeBadgeColor)
+                    .frame(width: 8, height: 8)
             }
             
-            Text(memory.content)
-                .font(.body)
-                .lineLimit(3)
+            Text(memory.path)
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .lineLimit(1)
             
             HStack {
-                Label(memory.type, systemImage: "tag")
+                Label(memory.memoryType, systemImage: memory.typeBadgeIcon)
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(memory.typeBadgeColor)
                 
-                if let agent = memory.agent {
-                    Label(agent, systemImage: "person")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
+                Label(memory.agent, systemImage: "person")
+                    .font(.caption)
+                    .foregroundColor(memory.agentBadgeColor)
                 
                 Spacer()
                 
-                Text(memory.createdAt, style: .relative)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                if let date = memory.date {
+                    Text(date, style: .date)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                } else {
+                    Text(memory.updatedAt, style: .relative)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
             }
         }
         .padding(.vertical, 4)

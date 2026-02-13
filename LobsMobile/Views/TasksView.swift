@@ -18,12 +18,21 @@ struct TasksView: View {
                 .pickerStyle(.segmented)
                 .padding()
                 
-                // Task List
+                // Task List - grouped by project
                 List {
-                    ForEach(viewModel.filteredTasks(for: selectedFilter)) { task in
-                        TaskRow(task: task, onStatusChange: { newStatus in
-                            await viewModel.updateTaskStatus(task.id, newStatus: newStatus, apiService: appState.apiService)
-                        })
+                    let grouped = viewModel.groupedTasks(for: selectedFilter)
+                    let sortedProjects = grouped.keys.sorted()
+                    
+                    ForEach(sortedProjects, id: \.self) { projectId in
+                        if let tasks = grouped[projectId] {
+                            Section(header: Text(projectName(projectId))) {
+                                ForEach(tasks) { task in
+                                    TaskRow(task: task, onStatusChange: { newStatus in
+                                        await viewModel.updateTaskStatus(task.id, newStatus: newStatus, apiService: appState.apiService)
+                                    })
+                                }
+                            }
+                        }
                     }
                 }
                 .listStyle(.plain)
@@ -36,6 +45,10 @@ struct TasksView: View {
                 await viewModel.load(apiService: appState.apiService)
             }
         }
+    }
+    
+    private func projectName(_ projectId: String) -> String {
+        viewModel.projects.first { $0.id == projectId }?.title ?? "Default"
     }
 }
 
