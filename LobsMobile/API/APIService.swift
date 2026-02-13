@@ -1550,6 +1550,12 @@ final class APIService {
   }
   
   // MARK: - Status
+
+  /// Verifies that the server is reachable and the current auth token is valid.
+  func testConnection() async throws -> Bool {
+    _ = try await fetchSystemOverview()
+    return true
+  }
   
   func fetchSystemOverview() async throws -> SystemOverview {
     return try await request(
@@ -1598,6 +1604,15 @@ final class APIService {
   }
   
   // MARK: - Calendar
+
+  /// Fetch all scheduled events (compatibility wrapper used by CalendarViewModel).
+  func fetchAllEvents(limit: Int = 100) async throws -> [ScheduledEvent] {
+    return try await request(
+      method: "GET",
+      path: "/api/calendar/events",
+      queryItems: [URLQueryItem(name: "limit", value: String(limit))]
+    )
+  }
   
   func fetchUpcomingEvents(limit: Int = 10) async throws -> [ScheduledEvent] {
     return try await request(
@@ -1620,6 +1635,29 @@ final class APIService {
       path: "/api/calendar/events",
       body: event
     )
+  }
+
+  /// Create a scheduled event (compatibility wrapper used by CalendarViewModel).
+  func createScheduledEvent(
+    title: String,
+    eventType: String,
+    scheduledAt: Date,
+    description: String?
+  ) async throws -> ScheduledEvent {
+    let event = ScheduledEventCreate(
+      title: title,
+      eventType: eventType,
+      scheduledAt: scheduledAt,
+      endAt: nil,
+      allDay: false,
+      description: description,
+      recurrenceRule: nil,
+      targetType: "all",
+      targetAgent: nil,
+      taskProjectId: nil,
+      taskNotes: nil
+    )
+    return try await createEvent(event)
   }
   
   // MARK: - Convenience Wrappers for ViewModels
