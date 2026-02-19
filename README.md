@@ -48,6 +48,14 @@ The app communicates with `lobs-server` via REST API:
 - `GET /api/calendar/events` - List scheduled events
 - `POST /api/calendar/events` - Create new event
 
+## Documentation
+
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** — System architecture, data flow, key components
+- **[AGENTS.md](AGENTS.md)** — AI agent development guide
+- **[docs/](docs/)** — Additional documentation
+  - [Known Issues](docs/KNOWN_ISSUES.md) — Known issues and technical debt
+  - [docs/README.md](docs/README.md) — Documentation index
+
 ## Development
 
 The app is designed to work with the same API token as the macOS Mission Control app. All API endpoints use the same authentication and data models.
@@ -63,6 +71,14 @@ The app is designed to work with the same API token as the macOS Mission Control
 - [ ] Rich text rendering for inbox items
 - [ ] File attachments
 - [ ] Voice input for quick capture
+
+## See Also
+
+**Lobs Ecosystem Documentation** (in `~/self-improvement/docs/`):
+- [LOBS_ECOSYSTEM.md](../self-improvement/docs/LOBS_ECOSYSTEM.md) — Cross-project architecture and feature matrix
+- [GETTING_STARTED.md](../self-improvement/docs/GETTING_STARTED.md) — 20-30 min ecosystem onboarding
+- [TECH_STACK_REFERENCE.md](../self-improvement/docs/TECH_STACK_REFERENCE.md) — Technology choices and patterns
+- [Code Quality System](../self-improvement/README.md) — Handoffs, reviews, technical debt tracking
 
 ## License
 
