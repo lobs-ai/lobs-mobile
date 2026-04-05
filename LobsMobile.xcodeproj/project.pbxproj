@@ -44,6 +44,7 @@
 		CC000001000000000000001A /* ServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD000001000000000000001A /* ServicesTests.swift */; };
 		CC000002000000000000001A /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD000002000000000000001A /* ViewModelTests.swift */; };
 		CC000003000000000000001A /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD000003000000000000001A /* ModelTests.swift */; };
+		AA000023000000000000001A /* NexusTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000023000000000000001A /* NexusTheme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		BB000020000000000000001A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BB000021000000000000001A /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		BB000022000000000000001A /* UsageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageView.swift; sourceTree = "<group>"; };
+		BB000023000000000000001A /* NexusTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NexusTheme.swift; sourceTree = "<group>"; };
 		BB000099000000000000001A /* LobsMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LobsMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD000001000000000000001A /* ServicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTests.swift; sourceTree = "<group>"; };
 		DD000002000000000000001A /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				AA000104000000000000001A /* Services */,
 				AA000105000000000000001A /* ViewModels */,
 				AA000106000000000000001A /* Views */,
+				AA000108000000000000001A /* Theme */,
 			);
 			path = LobsMobile;
 			sourceTree = "<group>";
@@ -229,6 +232,14 @@
 				BB00001A000000000000001A /* ToolCallCard.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		AA000108000000000000001A /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				BB000023000000000000001A /* NexusTheme.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		AA000200000000000000001A /* LobsMobileTests */ = {
@@ -365,6 +376,7 @@
 				AA000020000000000000001A /* SettingsView.swift in Sources */,
 				AA000021000000000000001A /* TasksView.swift in Sources */,
 				AA000022000000000000001A /* UsageView.swift in Sources */,
+				AA000023000000000000001A /* NexusTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
