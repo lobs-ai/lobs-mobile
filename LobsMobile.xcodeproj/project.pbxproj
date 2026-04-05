@@ -630,7 +630,7 @@
 				FF000011000000000000001A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		FF000001000000000000001A /* Build configuration list for PBXNativeTarget "LobsMobile" */ = {
 			isa = XCConfigurationList;
@@ -639,7 +639,7 @@
 				FF000021000000000000001A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		FF000002000000000000001A /* Build configuration list for PBXNativeTarget "LobsMobileTests" */ = {
 			isa = XCConfigurationList;
@@ -648,7 +648,7 @@
 				FF000031000000000000001A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 
