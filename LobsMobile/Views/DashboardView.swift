@@ -9,69 +9,74 @@ struct DashboardView: View {
             ScrollView {
                 if let overview = viewModel.overview {
                     VStack(spacing: 20) {
-                        // Server Status
-                        HStack {
+                        // Server Status Bar
+                        HStack(spacing: 8) {
                             Circle()
-                                .fill(overview.server.status == "healthy" ? Color.green : Color.red)
-                                .frame(width: 12, height: 12)
+                                .fill(overview.server.status == "healthy" ? Color.nexusTeal : Color.nexusError)
+                                .frame(width: 10, height: 10)
+                                .shadow(color: (overview.server.status == "healthy" ? Color.nexusTeal : Color.nexusError).opacity(0.6), radius: 6)
                             Text(overview.server.status.capitalized)
                                 .font(.caption)
-                                .foregroundColor(.secondary)
+                                .fontWeight(.medium)
+                                .foregroundColor(overview.server.status == "healthy" ? Color.nexusTeal : Color.nexusError)
                             Spacer()
                             if viewModel.isLoading {
                                 ProgressView()
+                                    .tint(Color.nexusTeal)
+                                    .scaleEffect(0.8)
                             }
+                            Text("lobs-core")
+                                .font(.caption2)
+                                .foregroundColor(.nexusMuted)
                         }
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 10)
+                        .background(Color.nexusSurface)
+                        .cornerRadius(10)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.nexusBorder, lineWidth: 1)
+                        )
                         .padding(.horizontal)
                         
-                        // Quick Stats
-                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                            StatCard(
-                                title: "Active Tasks",
-                                value: "\(overview.tasks.active)",
-                                icon: "circle.fill",
-                                color: .blue
-                            )
-                            StatCard(
-                                title: "Unread Inbox",
-                                value: "\(overview.inbox.unread)",
-                                icon: "tray.fill",
-                                color: .orange
-                            )
-                            StatCard(
-                                title: "Active Workers",
-                                value: "\(overview.workers.active)",
-                                icon: "gearshape.fill",
-                                color: .purple
-                            )
-                            StatCard(
-                                title: "Total Memories",
-                                value: "\(overview.memories.total)",
-                                icon: "brain.head.profile",
-                                color: .green
-                            )
+                        // Quick Stats Grid
+                        LazyVGrid(columns: [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)], spacing: 12) {
+                            DashboardStatCard(title: "Active Tasks", value: "\(overview.tasks.active)", icon: "checkmark.circle.fill", color: .nexusBlue)
+                            DashboardStatCard(title: "Unread Inbox", value: "\(overview.inbox.unread)", icon: "tray.fill", color: .nexusWarning)
+                            DashboardStatCard(title: "Active Workers", value: "\(overview.workers.active)", icon: "gearshape.2.fill", color: .nexusTeal)
+                            DashboardStatCard(title: "Memories", value: "\(overview.memories.total)", icon: "brain.head.profile.fill", color: .nexusBlue)
                         }
                         .padding(.horizontal)
                         
                         // Orchestrator Status
                         if overview.orchestrator.running {
-                            HStack {
+                            HStack(spacing: 8) {
                                 Image(systemName: "circle.fill")
-                                    .foregroundColor(overview.orchestrator.paused ? .orange : .green)
-                                    .font(.caption)
+                                    .font(.system(size: 8))
+                                    .foregroundColor(overview.orchestrator.paused ? .nexusWarning : .nexusTeal)
                                 Text(overview.orchestrator.paused ? "Orchestrator Paused" : "Orchestrator Running")
                                     .font(.caption)
-                                    .foregroundColor(.secondary)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.nexusMuted)
                                 Spacer()
                             }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 10)
+                            .background(Color.nexusSurface)
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.nexusBorder, lineWidth: 1)
+                            )
                             .padding(.horizontal)
                         }
                         
-                        // Worker Stats
+                        // Agents Section
                         if !overview.agents.isEmpty {
                             VStack(alignment: .leading, spacing: 12) {
                                 Text("Agents")
                                     .font(.headline)
+                                    .foregroundColor(.nexusText)
                                     .padding(.horizontal)
                                 
                                 ForEach(overview.agents) { agent in
@@ -82,29 +87,45 @@ struct DashboardView: View {
                     }
                     .padding(.vertical)
                 } else if viewModel.isLoading {
-                    ProgressView("Loading...")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    VStack(spacing: 16) {
+                        ProgressView()
+                            .tint(Color.nexusTeal)
+                            .scaleEffect(1.2)
+                        Text("Loading...")
+                            .font(.subheadline)
+                            .foregroundColor(.nexusMuted)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding(.top, 100)
                 } else if let error = viewModel.error {
-                    VStack(spacing: 12) {
-                        Image(systemName: "exclamationmark.triangle")
-                            .font(.largeTitle)
-                            .foregroundColor(.orange)
-                        Text("Error Loading Dashboard")
+                    VStack(spacing: 16) {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .font(.system(size: 40))
+                            .foregroundColor(.nexusWarning)
+                        Text("Connection Error")
                             .font(.headline)
+                            .foregroundColor(.nexusText)
                         Text(error)
                             .font(.caption)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.nexusMuted)
                             .multilineTextAlignment(.center)
-                        Button("Retry") {
-                            Task {
-                                await viewModel.load(apiService: appState.apiService)
-                            }
+                            .padding(.horizontal, 32)
+                        Button {
+                            Task { await viewModel.load(apiService: appState.apiService) }
+                        } label: {
+                            Text("Retry")
+                                .fontWeight(.semibold)
+                                .foregroundColor(.nexusNavy)
+                                .padding(.horizontal, 24)
+                                .padding(.vertical, 10)
+                                .background(Color.nexusTeal)
+                                .cornerRadius(8)
                         }
-                        .buttonStyle(.borderedProminent)
                     }
-                    .padding()
+                    .padding(.top, 80)
                 }
             }
+            .nexusBackground()
             .navigationTitle("Dashboard")
             .refreshable {
                 await viewModel.load(apiService: appState.apiService)
@@ -116,6 +137,44 @@ struct DashboardView: View {
     }
 }
 
+// MARK: - Dashboard Stat Card
+
+struct DashboardStatCard: View {
+    let title: String
+    let value: String
+    let icon: String
+    let color: Color
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Image(systemName: icon)
+                    .font(.system(size: 16))
+                    .foregroundColor(color)
+                Spacer()
+            }
+            
+            Text(value)
+                .font(.system(size: 28, weight: .bold, design: .rounded))
+                .foregroundColor(.nexusText)
+            
+            Text(title)
+                .font(.caption)
+                .foregroundColor(.nexusMuted)
+        }
+        .padding(14)
+        .background(Color.nexusSurface)
+        .cornerRadius(12)
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(color.opacity(0.15), lineWidth: 1)
+        )
+        .shadow(color: color.opacity(0.08), radius: 8, x: 0, y: 2)
+    }
+}
+
+// MARK: - Agent Status Row
+
 struct AgentStatusRow: View {
     let agent: SystemOverview.AgentStatusSummary
     
@@ -124,34 +183,40 @@ struct AgentStatusRow: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(agent.type.capitalized)
                     .font(.subheadline)
-                    .bold()
-                HStack(spacing: 4) {
+                    .fontWeight(.semibold)
+                    .foregroundColor(.nexusText)
+                HStack(spacing: 6) {
                     Circle()
                         .fill(statusColor(agent.status))
-                        .frame(width: 8, height: 8)
+                        .frame(width: 7, height: 7)
+                        .shadow(color: statusColor(agent.status).opacity(0.6), radius: 4)
                     Text(agent.status.capitalized)
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.nexusMuted)
                 }
             }
             Spacer()
             if let lastActive = agent.lastActive {
                 Text(lastActive)
                     .font(.caption2)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.nexusMuted)
             }
         }
-        .padding()
-        .background(Color(.systemGray6))
-        .cornerRadius(8)
+        .padding(14)
+        .background(Color.nexusSurface)
+        .cornerRadius(10)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.nexusBorder, lineWidth: 1)
+        )
         .padding(.horizontal)
     }
     
     private func statusColor(_ status: String) -> Color {
         switch status.lowercased() {
-        case "idle": return .gray
-        case "working", "thinking", "finalizing": return .green
-        default: return .blue
+        case "idle": return .nexusMuted
+        case "working", "thinking", "finalizing": return .nexusTeal
+        default: return .nexusBlue
         }
     }
 }

@@ -1,6 +1,5 @@
 import SwiftUI
 
-/// A single chat message bubble
 struct ChatMessageView: View {
     let message: ChatMessage
     let isStreaming: Bool
@@ -19,18 +18,24 @@ struct ChatMessageView: View {
             }
             
             VStack(alignment: message.role == .user ? .trailing : .leading, spacing: 4) {
-                // Message content
                 messageContent
                     .padding(.horizontal, 14)
                     .padding(.vertical, 10)
                     .background(bubbleBackground)
                     .cornerRadius(18)
+                    .overlay(
+                        Group {
+                            if message.role == .assistant {
+                                RoundedRectangle(cornerRadius: 18)
+                                    .stroke(Color.nexusBorder, lineWidth: 1)
+                            }
+                        }
+                    )
                 
-                // Timestamp
                 if !isStreaming {
                     Text(message.createdAt, style: .time)
                         .font(.caption2)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.nexusMuted)
                 }
             }
             
@@ -53,50 +58,59 @@ struct ChatMessageView: View {
         } else {
             MarkdownText(text)
                 .font(.body)
-                .foregroundColor(.primary)
+                .foregroundColor(.nexusText)
         }
     }
     
-    private var bubbleBackground: Color {
+    @ViewBuilder
+    private var bubbleBackground: some View {
         if message.role == .user {
-            return Color.blue
+            LinearGradient(
+                colors: [Color.nexusTeal, Color.nexusTeal.opacity(0.85)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
         } else {
-            return Color(.systemGray5)
+            Color.nexusSurface
         }
     }
 }
 
-/// Typing indicator shown when assistant is thinking
 struct TypingIndicatorView: View {
-    @State private var animationOffset: Double = 0
+    @State private var dotScale: [CGFloat] = [0.5, 0.5, 0.5]
     
     var body: some View {
         HStack {
-            HStack(spacing: 4) {
-                ForEach(0..<3) { index in
+            HStack(spacing: 5) {
+                ForEach(0..<3, id: \.self) { index in
                     Circle()
-                        .fill(Color.gray)
+                        .fill(Color.nexusTeal.opacity(0.7))
                         .frame(width: 8, height: 8)
-                        .offset(y: animationOffset(for: index))
+                        .scaleEffect(dotScale[index])
                 }
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
-            .background(Color(.systemGray5))
+            .background(Color.nexusSurface)
             .cornerRadius(18)
+            .overlay(
+                RoundedRectangle(cornerRadius: 18)
+                    .stroke(Color.nexusBorder, lineWidth: 1)
+            )
             
             Spacer()
         }
         .onAppear {
-            withAnimation(.easeInOut(duration: 0.5).repeatForever()) {
-                animationOffset = -5
+            for i in 0..<3 {
+                withAnimation(
+                    .easeInOut(duration: 0.5)
+                    .repeatForever(autoreverses: true)
+                    .delay(Double(i) * 0.15)
+                ) {
+                    dotScale[i] = 1.0
+                }
             }
         }
-    }
-    
-    private func animationOffset(for index: Int) -> Double {
-        let delay = Double(index) * 0.15
-        return sin(animationOffset + delay * 10) * 3
     }
 }
 
@@ -118,19 +132,8 @@ struct TypingIndicatorView: View {
             messageMetadata: nil
         ))
         
-        ChatMessageView(
-            message: ChatMessage(
-                id: "3",
-                role: .assistant,
-                content: "",
-                createdAt: Date(),
-                messageMetadata: nil
-            ),
-            isStreaming: true,
-            streamingText: "Thinking..."
-        )
-        
         TypingIndicatorView()
     }
     .padding()
+    .background(Color.nexusNavy)
 }
