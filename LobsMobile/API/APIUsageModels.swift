@@ -28,6 +28,14 @@ struct UsageModelSummary: Codable, Identifiable {
   var id: String { "\(provider)::\(model)::\(routeType)" }
 }
 
+struct DailyCostPoint: Codable, Identifiable {
+  var date: Date
+  var costUsd: Double
+  var provider: String?
+
+  var id: Date { date }
+}
+
 struct UsageSummaryResponse: Codable {
   var window: String
   var periodStart: Date
@@ -39,6 +47,7 @@ struct UsageSummaryResponse: Codable {
   var totalEstimatedCostUsd: Double
   var byProvider: [UsageProviderSummary]
   var byModel: [UsageModelSummary]
+  var dailySeries: [DailyCostPoint]?
 }
 
 struct UsageProjectionResponse: Codable {

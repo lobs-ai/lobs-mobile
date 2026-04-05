@@ -17,32 +17,19 @@ struct ContentView: View {
                 }
                 .tag(1)
             
-            InboxView()
-                .tabItem {
-                    Label("Inbox", systemImage: "tray.fill")
-                }
-                .tag(2)
-            
             ChatView()
                 .tabItem {
                     Label("Chat", systemImage: "message.fill")
                 }
+                .tag(2)
+            
+            InboxView()
+                .tabItem {
+                    Label("Inbox", systemImage: "tray.fill")
+                }
                 .tag(3)
             
-            NavigationStack {
-                List {
-                    NavigationLink(destination: CalendarView()) {
-                        Label("Calendar", systemImage: "calendar")
-                    }
-                    NavigationLink(destination: MemoryView()) {
-                        Label("Memory", systemImage: "brain.head.profile")
-                    }
-                    NavigationLink(destination: SettingsView()) {
-                        Label("Settings", systemImage: "gear")
-                    }
-                }
-                .navigationTitle("More")
-            }
+            MoreView()
             .tabItem {
                 Label("More", systemImage: "ellipsis.circle.fill")
             }

@@ -511,6 +511,51 @@ final class APIService {
       path: "/api/tasks/\(taskId)/archive"
     )
   }
+
+  func runTask(taskId: String) async throws -> DashboardTask {
+    try await request(
+      method: "POST",
+      path: "/api/tasks/\(taskId)/run"
+    )
+  }
+
+  func completeTask(taskId: String) async throws -> DashboardTask {
+    try await request(
+      method: "POST",
+      path: "/api/tasks/\(taskId)/complete"
+    )
+  }
+
+  func rejectTask(taskId: String) async throws -> DashboardTask {
+    try await request(
+      method: "POST",
+      path: "/api/tasks/\(taskId)/reject"
+    )
+  }
+
+  func braindump(content: String, projectId: String? = nil) async throws -> BrainDumpResponse {
+    struct BrainDumpRequest: Encodable {
+      let content: String
+      let projectId: String?
+    }
+    return try await request(
+      method: "POST",
+      path: "/api/tasks/braindump",
+      body: BrainDumpRequest(content: content, projectId: projectId)
+    )
+  }
+  
+  func confirmBraindump(sessionId: String, taskIds: [String]) async throws -> [DashboardTask] {
+    struct ConfirmRequest: Encodable {
+      let sessionId: String
+      let taskIds: [String]
+    }
+    return try await request(
+      method: "POST",
+      path: "/api/tasks/braindump/confirm",
+      body: ConfirmRequest(sessionId: sessionId, taskIds: taskIds)
+    )
+  }
   
   func loadTaskArtifact(taskId: String) async throws -> String {
     struct ArtifactContent: Codable {
@@ -615,9 +660,63 @@ final class APIService {
   
   func loadAllInboxThreads() async throws -> [String: InboxThread] {
     // The API doesn't have a bulk threads endpoint
-    // This would need to be implemented by loading threads for each inbox item
-    // For now, return empty dict - threads are loaded on-demand
+    // Threads are loaded on-demand per inbox item
     return [:]
+  }
+  
+  func approveInboxItem(id: String) async throws {
+    try await requestVoid(
+      method: "POST",
+      path: "/api/inbox/\(id)/approve"
+    )
+  }
+  
+  func rejectInboxItem(id: String) async throws {
+    try await requestVoid(
+      method: "POST",
+      path: "/api/inbox/\(id)/reject"
+    )
+  }
+  
+  func sendInboxFeedback(id: String, feedback: String) async throws {
+    struct FeedbackRequest: Encodable {
+      let feedback: String
+    }
+    try await requestVoid(
+      method: "POST",
+      path: "/api/inbox/\(id)/feedback",
+      body: FeedbackRequest(feedback: feedback)
+    )
+  }
+  
+  func postInboxResponse(id: String, content: String) async throws {
+    struct ResponseRequest: Encodable {
+      let content: String
+    }
+    try await requestVoid(
+      method: "POST",
+      path: "/api/inbox/\(id)/response",
+      body: ResponseRequest(content: content)
+    )
+  }
+  
+  func bulkUpdateInboxReadState(ids: [String], isRead: Bool) async throws {
+    struct BulkReadRequest: Encodable {
+      let ids: [String]
+      let isRead: Bool
+    }
+    try await requestVoid(
+      method: "POST",
+      path: "/api/inbox/read-state",
+      body: BulkReadRequest(ids: ids, isRead: isRead)
+    )
+  }
+  
+  func deleteInboxItem(id: String) async throws {
+    try await requestVoid(
+      method: "DELETE",
+      path: "/api/inbox/\(id)"
+    )
   }
   
   // MARK: - Agent Documents

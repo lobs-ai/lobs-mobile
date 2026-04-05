@@ -737,6 +737,24 @@ struct TextDump: Codable, Identifiable, Hashable {
   var updatedAt: Date
 }
 
+// MARK: - Brain Dump
+
+struct BrainDumpResponse: Codable {
+  let proposedTasks: [ProposedTask]
+  let sessionId: String?
+}
+
+struct ProposedTask: Codable, Identifiable {
+  let id: String?
+  let title: String
+  let notes: String?
+  let agent: String?
+  let tier: String?
+  let projectId: String?
+  
+  var stableId: String { id ?? title }
+}
+
 // MARK: - Worker Status
 
 struct WorkerStatus: Codable {

@@ -63,6 +63,9 @@ struct ChatView: View {
                 .background(Color(.systemGray6))
             }
             .navigationTitle("Chat")
+            .refreshable {
+                await viewModel.loadSessions(apiService: appState.apiService)
+            }
             .task {
                 await viewModel.loadSessions(apiService: appState.apiService)
             }
