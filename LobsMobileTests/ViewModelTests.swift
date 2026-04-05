@@ -28,8 +28,8 @@ final class ViewModelTests: XCTestCase {
             owner: owner,
             createdAt: now,
             updatedAt: now,
-            sortOrder: sortOrder,
-            projectId: projectId
+            projectId: projectId,
+            sortOrder: sortOrder
         )
     }
 
@@ -684,7 +684,7 @@ final class ViewModelTests: XCTestCase {
         ]
         vm.summary = makeUsageSummary(dailySeries: points)
         XCTAssertEqual(vm.costTrendData.count, 2)
-        XCTAssertEqual(vm.costTrendData.first?.costUsd, 1.23, accuracy: 0.001)
+        XCTAssertEqual(vm.costTrendData.first?.costUsd ?? 0, 1.23, accuracy: 0.001)
     }
 
     func testUsageViewModel_costTrendData_emptyDailySeries_returnsEmpty() {

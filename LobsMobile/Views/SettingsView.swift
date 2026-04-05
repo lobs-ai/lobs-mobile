@@ -50,7 +50,7 @@ struct SettingsView: View {
                 
                 // Cloudflare Access section — only shown for *.lobslab.com servers
                 if appState.needsCloudflareAuth {
-                    Section("Cloudflare Access") {
+                    Section {
                         HStack {
                             Text("Status")
                             Spacer()
@@ -86,6 +86,8 @@ struct SettingsView: View {
                             }
                             .disabled(appState.cloudflareAuth.isAuthenticating || serverURL.isEmpty)
                         }
+                    } header: {
+                        Text("Cloudflare Access")
                     } footer: {
                         if let error = appState.cloudflareAuth.error {
                             Text(error)

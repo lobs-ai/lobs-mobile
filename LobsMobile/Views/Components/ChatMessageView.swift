@@ -28,7 +28,7 @@ struct ChatMessageView: View {
                 
                 // Timestamp
                 if !isStreaming {
-                    Text(message.timestamp, style: .time)
+                    Text(message.createdAt, style: .time)
                         .font(.caption2)
                         .foregroundColor(.secondary)
                 }
@@ -68,7 +68,7 @@ struct ChatMessageView: View {
 
 /// Typing indicator shown when assistant is thinking
 struct TypingIndicatorView: View {
-    @State private var animationOffset = 0
+    @State private var animationOffset: Double = 0
     
     var body: some View {
         HStack {
@@ -94,9 +94,9 @@ struct TypingIndicatorView: View {
         }
     }
     
-    private func animationOffset(for index: Int) -> CGFloat {
+    private func animationOffset(for index: Int) -> Double {
         let delay = Double(index) * 0.15
-        return sin((animationOffset + CGFloat(delay) * 10)) * 3
+        return sin(animationOffset + delay * 10) * 3
     }
 }
 
@@ -106,14 +106,16 @@ struct TypingIndicatorView: View {
             id: "1",
             role: .user,
             content: "Hello, how are you?",
-            timestamp: Date()
+            createdAt: Date(),
+            messageMetadata: nil
         ))
         
         ChatMessageView(message: ChatMessage(
             id: "2",
             role: .assistant,
             content: "I'm doing great! **Thanks** for asking.",
-            timestamp: Date()
+            createdAt: Date(),
+            messageMetadata: nil
         ))
         
         ChatMessageView(
@@ -121,7 +123,8 @@ struct TypingIndicatorView: View {
                 id: "3",
                 role: .assistant,
                 content: "",
-                timestamp: Date()
+                createdAt: Date(),
+                messageMetadata: nil
             ),
             isStreaming: true,
             streamingText: "Thinking..."

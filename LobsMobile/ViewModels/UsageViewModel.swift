@@ -56,7 +56,7 @@ class UsageViewModel: ObservableObject {
 
             self.summary = summaryResult
             self.projection = projectionResult
-            self.workerHistory = historyResult.runs
+            self.workerHistory = historyResult?.runs ?? []
         } catch {
             self.error = error.localizedDescription
         }

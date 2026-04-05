@@ -80,21 +80,21 @@ struct MarkdownText: View {
         var result = input
         
         // Bold: **text**
-        result = applyPattern(&result, pattern: "\\*\\*(.+?)\\*\\*") { str, range in
+        result = applyPattern(result, pattern: "\\*\\*(.+?)\\*\\*") { str, range in
             var attr = AttributedString(str[range])
             attr.font = .body.bold()
             return attr
         }
         
         // Italic: *text* or _text_
-        result = applyPattern(&result, pattern: "(?<![*])\\*(?![*])(.+?)(?<![*])\\*(?![*])") { str, range in
+        result = applyPattern(result, pattern: "(?<![*])\\*(?![*])(.+?)(?<![*])\\*(?![*])") { str, range in
             var attr = AttributedString(str[range])
             attr.font = .body.italic()
             return attr
         }
         
         // Inline code: `code`
-        result = applyPattern(&result, pattern: "`([^`]+)`") { str, range in
+        result = applyPattern(result, pattern: "`([^`]+)`") { str, range in
             var attr = AttributedString(str[range])
             attr.font = .system(.body, design: .monospaced)
             attr.backgroundColor = Color.gray.opacity(0.15)
@@ -102,7 +102,7 @@ struct MarkdownText: View {
         }
         
         // Links: [text](url)
-        result = applyPattern(&result, pattern: "\\[([^\\]]+)\\]\\(([^)]+)\\)") { str, range in
+        result = applyPattern(result, pattern: "\\[([^\\]]+)\\]\\(([^)]+)\\)") { str, range in
             var attr = AttributedString(str[range])
             attr.foregroundColor = .blue
             attr.underlineStyle = .single
