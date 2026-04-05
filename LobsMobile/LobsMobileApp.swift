@@ -26,8 +26,8 @@ class AppState: ObservableObject {
     
     init() {
         // Load from UserDefaults
-        self.serverURL = UserDefaults.standard.string(forKey: "serverURL") ?? "http://localhost:8000"
-        self.apiToken = UserDefaults.standard.string(forKey: "apiToken") ?? "z5mr-WWjPxAAHvRd2ZULm7HLNW1oRubXmcMiBJoEmsU"
+        self.serverURL = UserDefaults.standard.string(forKey: "serverURL") ?? "https://nexus.lobslab.com"
+        self.apiToken = UserDefaults.standard.string(forKey: "apiToken") ?? ""
         
         // Initialize API service
         if let service = try? APIService(baseURLString: serverURL, apiToken: apiToken) {
