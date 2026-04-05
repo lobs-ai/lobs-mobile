@@ -30,12 +30,13 @@ struct ToolCallCard: View {
                 
                 Text(toolCall.toolName)
                     .font(.subheadline.bold())
-                    .foregroundColor(.primary)
+                    .foregroundColor(.nexusText)
                 
                 Spacer()
                 
                 if toolCall.status == .inProgress {
                     ProgressView()
+                        .tint(.nexusTeal)
                         .scaleEffect(0.7)
                 } else {
                     Button {
@@ -45,7 +46,7 @@ struct ToolCallCard: View {
                     } label: {
                         Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                             .font(.caption)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.nexusMuted)
                     }
                 }
             }
@@ -54,22 +55,28 @@ struct ToolCallCard: View {
             if let input = toolCall.input, !input.isEmpty {
                 Text("Input: \(input)")
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.nexusMuted)
                     .lineLimit(isExpanded ? nil : 1)
             }
             
             // Result (if available and expanded)
             if isExpanded, let result = toolCall.result {
-                Divider()
+                Rectangle()
+                    .fill(Color.nexusBorder)
+                    .frame(height: 1)
                 Text(result)
                     .font(.system(.caption, design: .monospaced))
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.nexusMuted)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
         .padding(12)
-        .background(Color(.systemGray6))
+        .background(Color.nexusSurface)
         .cornerRadius(12)
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.nexusBorder, lineWidth: 1)
+        )
     }
     
     private var statusIcon: String {
@@ -86,11 +93,11 @@ struct ToolCallCard: View {
     private var statusColor: Color {
         switch toolCall.status {
         case .inProgress:
-            return .blue
+            return .nexusBlue
         case .completed:
-            return .green
+            return .nexusSuccess
         case .failed:
-            return .red
+            return .nexusError
         }
     }
 }
@@ -113,4 +120,5 @@ struct ToolCallCard: View {
         ))
     }
     .padding()
+    .background(Color.nexusNavy)
 }
