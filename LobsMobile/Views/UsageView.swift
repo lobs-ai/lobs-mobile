@@ -100,7 +100,7 @@ struct UsageView: View {
                         x: .value("Date", point.date, unit: .day),
                         y: .value("Cost", point.costUsd)
                     )
-                    .foregroundStyle(.nexusBlue.gradient)
+                    .foregroundStyle(Color.nexusBlue.gradient)
                     .cornerRadius(4)
                 }
                 .chartYAxis {
