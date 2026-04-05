@@ -12,8 +12,15 @@ struct MemoryView: View {
                 // Quick Capture
                 VStack(spacing: 8) {
                     TextField("Quick capture...", text: $captureText, axis: .vertical)
-                        .textFieldStyle(.roundedBorder)
                         .lineLimit(3...6)
+                        .padding(10)
+                        .background(Color.nexusSurface)
+                        .foregroundColor(.nexusText)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.nexusBorder, lineWidth: 1)
+                        )
                     
                     Button(action: {
                         Task {
@@ -23,31 +30,40 @@ struct MemoryView: View {
                     }) {
                         Label("Capture", systemImage: "arrow.up.circle.fill")
                             .frame(maxWidth: .infinity)
+                            .foregroundColor(.nexusNavy)
+                            .fontWeight(.medium)
                     }
-                    .buttonStyle(.borderedProminent)
+                    .padding(.vertical, 10)
+                    .background(captureText.isEmpty || viewModel.isCapturing ? Color.nexusTeal.opacity(0.4) : Color.nexusTeal)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
                     .disabled(captureText.isEmpty || viewModel.isCapturing)
                 }
                 .padding()
-                .background(Color(.systemGray6))
+                .background(Color.nexusCharcoal)
                 
                 // Search Bar
                 HStack {
                     Image(systemName: "magnifyingglass")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.nexusMuted)
                     TextField("Search memories...", text: $searchText)
                         .textFieldStyle(.plain)
+                        .foregroundColor(.nexusText)
                 }
                 .padding()
-                .background(Color(.systemBackground))
+                .background(Color.nexusSurface)
                 
                 // Memories List
                 List {
                     ForEach(viewModel.filteredMemories(searchText: searchText)) { memory in
                         MemoryItemView(memory: memory)
+                            .listRowBackground(Color.nexusSurface)
                     }
                 }
                 .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+                .background(Color.nexusNavy)
             }
+            .background(Color.nexusNavy)
             .navigationTitle("Memory")
             .refreshable {
                 await viewModel.load(apiService: appState.apiService)
@@ -67,6 +83,7 @@ struct MemoryItemView: View {
             HStack {
                 Text(memory.displayTitle)
                     .font(.headline)
+                    .foregroundColor(.nexusText)
                 Spacer()
                 Circle()
                     .fill(memory.typeBadgeColor)
@@ -75,7 +92,7 @@ struct MemoryItemView: View {
             
             Text(memory.path)
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundColor(.nexusMuted)
                 .lineLimit(1)
             
             HStack {
@@ -92,11 +109,11 @@ struct MemoryItemView: View {
                 if let date = memory.date {
                     Text(date, style: .date)
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.nexusMuted)
                 } else {
                     Text(memory.updatedAt, style: .relative)
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.nexusMuted)
                 }
             }
         }

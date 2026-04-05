@@ -9,13 +9,16 @@ struct CalendarView: View {
         NavigationStack {
             List {
                 ForEach(viewModel.groupedEvents.keys.sorted(), id: \.self) { date in
-                    Section(header: Text(date, style: .date)) {
+                    Section(header: Text(date, style: .date).foregroundColor(.nexusTeal)) {
                         ForEach(viewModel.groupedEvents[date] ?? []) { event in
                             CalendarEventRow(event: event)
+                                .listRowBackground(Color.nexusSurface)
                         }
                     }
                 }
             }
+            .scrollContentBackground(.hidden)
+            .nexusBackground()
             .navigationTitle("Calendar")
             .refreshable {
                 await viewModel.load(apiService: appState.apiService)
@@ -30,6 +33,7 @@ struct CalendarView: View {
                     } label: {
                         Image(systemName: "plus")
                     }
+                    .tint(.nexusTeal)
                 }
             }
             .sheet(isPresented: $showCreateEvent) {
@@ -60,7 +64,7 @@ struct CalendarEventRow: View {
                 if let description = event.description {
                     Text(description)
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.nexusMuted)
                         .lineLimit(2)
                 }
                 
@@ -71,7 +75,7 @@ struct CalendarEventRow: View {
                     
                     Text(event.scheduledAt, style: .time)
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.nexusMuted)
                 }
             }
             
@@ -79,10 +83,10 @@ struct CalendarEventRow: View {
             
             if event.status == "pending" {
                 Image(systemName: "clock")
-                    .foregroundColor(.orange)
+                    .foregroundColor(.nexusWarning)
             } else if event.status == "fired" {
                 Image(systemName: "checkmark.circle.fill")
-                    .foregroundColor(.green)
+                    .foregroundColor(.nexusSuccess)
             }
         }
         .padding(.vertical, 4)
@@ -99,10 +103,10 @@ struct CalendarEventRow: View {
     
     private func eventTypeColor(_ type: String) -> Color {
         switch type {
-        case "reminder": return .orange
-        case "task": return .blue
-        case "meeting": return .purple
-        default: return .gray
+        case "reminder": return .nexusWarning
+        case "task": return .nexusBlue
+        case "meeting": return Color(red: 168/255, green: 85/255, blue: 247/255)
+        default: return .nexusMuted
         }
     }
 }
@@ -139,6 +143,8 @@ struct CreateEventView: View {
                         .lineLimit(3...6)
                 }
             }
+            .scrollContentBackground(.hidden)
+            .nexusBackground()
             .navigationTitle("New Event")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -146,6 +152,7 @@ struct CreateEventView: View {
                     Button("Cancel") {
                         dismiss()
                     }
+                    .tint(.nexusTeal)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -162,8 +169,10 @@ struct CreateEventView: View {
                         }
                     }
                     .disabled(title.isEmpty || isCreating)
+                    .tint(.nexusTeal)
                 }
             }
         }
+        .presentationBackground(Color.nexusCharcoal)
     }
 }

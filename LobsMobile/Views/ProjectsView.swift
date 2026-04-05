@@ -37,6 +37,7 @@ struct ProjectsView: View {
                     } label: {
                         Image(systemName: viewModel.showArchived ? "archivebox.fill" : "archivebox")
                     }
+                    .tint(.nexusTeal)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -45,6 +46,7 @@ struct ProjectsView: View {
                     } label: {
                         Image(systemName: "plus")
                     }
+                    .tint(.nexusTeal)
                 }
             }
             .refreshable {
@@ -68,13 +70,14 @@ struct ProjectsView: View {
                         NavigationLink(destination: ProjectDetailView(project: project, viewModel: viewModel)) {
                             ProjectRow(project: project)
                         }
+                        .listRowBackground(Color.nexusSurface)
                         .swipeActions(edge: .trailing) {
                             Button {
                                 Task { await viewModel.archiveProject(project) }
                             } label: {
                                 Label("Archive", systemImage: "archivebox")
                             }
-                            .tint(.gray)
+                            .tint(.nexusMuted)
                         }
                         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                             Button(role: .destructive) {
@@ -93,18 +96,21 @@ struct ProjectsView: View {
                         NavigationLink(destination: ProjectDetailView(project: project, viewModel: viewModel)) {
                             ProjectRow(project: project)
                         }
+                        .listRowBackground(Color.nexusSurface)
                         .swipeActions(edge: .trailing) {
                             Button {
                                 Task { await viewModel.unarchiveProject(project) }
                             } label: {
                                 Label("Unarchive", systemImage: "arrow.uturn.backward")
                             }
-                            .tint(.blue)
+                            .tint(.nexusBlue)
                         }
                     }
                 }
             }
         }
+        .scrollContentBackground(.hidden)
+        .nexusBackground()
     }
 }
 
@@ -127,13 +133,13 @@ struct ProjectRow: View {
             if let notes = project.notes, !notes.isEmpty {
                 Text(notes)
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundColor(.nexusMuted)
                     .lineLimit(2)
             }
             
             Text(project.updatedAt, style: .relative)
                 .font(.caption)
-                .foregroundStyle(.tertiary)
+                .foregroundColor(.nexusMuted.opacity(0.6))
         }
         .padding(.vertical, 2)
     }
@@ -157,9 +163,9 @@ struct ProjectTypeBadge: View {
     
     private var badgeColor: Color {
         switch type {
-        case .kanban: return .blue
-        case .research: return .purple
-        case .tracker: return .orange
+        case .kanban: return .nexusBlue
+        case .research: return Color(red: 168/255, green: 85/255, blue: 247/255)
+        case .tracker: return .nexusWarning
         }
     }
 }
@@ -193,7 +199,7 @@ struct ProjectDetailView: View {
                 if project.archived ?? false {
                     LabeledContent("Status") {
                         Text("Archived")
-                            .foregroundStyle(.secondary)
+                            .foregroundColor(.nexusMuted)
                     }
                 }
             }
@@ -223,7 +229,7 @@ struct ProjectDetailView: View {
                             .font(.body)
                     } else {
                         Text("No notes")
-                            .foregroundStyle(.secondary)
+                            .foregroundColor(.nexusMuted)
                     }
                 }
             }
@@ -255,6 +261,8 @@ struct ProjectDetailView: View {
                 }
             }
         }
+        .scrollContentBackground(.hidden)
+        .nexusBackground()
         .navigationTitle(project.title)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -263,6 +271,7 @@ struct ProjectDetailView: View {
                 } label: {
                     Text("Edit")
                 }
+                .tint(.nexusTeal)
             }
         }
     }
@@ -294,6 +303,8 @@ struct ProjectFormSheet: View {
                         .frame(minHeight: 100)
                 }
             }
+            .scrollContentBackground(.hidden)
+            .nexusBackground()
             .navigationTitle(isEditing ? "Edit Project" : "New Project")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -302,6 +313,7 @@ struct ProjectFormSheet: View {
                         viewModel.resetCreateForm()
                         dismiss()
                     }
+                    .tint(.nexusTeal)
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button(isEditing ? "Save" : "Create") {
@@ -318,9 +330,11 @@ struct ProjectFormSheet: View {
                         }
                     }
                     .disabled(viewModel.newTitle.trimmingCharacters(in: .whitespaces).isEmpty)
+                    .tint(.nexusTeal)
                 }
             }
         }
         .presentationDetents([.medium, .large])
+        .presentationBackground(Color.nexusCharcoal)
     }
 }

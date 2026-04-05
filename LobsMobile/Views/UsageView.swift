@@ -37,6 +37,7 @@ struct UsageView: View {
                 }
                 .padding(.bottom, 20)
             }
+            .nexusBackground()
             .navigationTitle("Usage & Stats")
             .refreshable {
                 await viewModel.loadData()
@@ -59,25 +60,25 @@ struct UsageView: View {
                 title: "Total Cost",
                 value: formatCost(summary.totalEstimatedCostUsd),
                 icon: "dollarsign.circle.fill",
-                color: .green
+                color: .nexusSuccess
             )
             StatCard(
                 title: "Tokens",
                 value: formatTokens(viewModel.totalTokens),
                 icon: "text.word.spacing",
-                color: .blue
+                color: .nexusBlue
             )
             StatCard(
                 title: "Requests",
                 value: formatCount(summary.totalRequests),
                 icon: "arrow.up.arrow.down.circle.fill",
-                color: .purple
+                color: Color(red: 168/255, green: 85/255, blue: 247/255)
             )
             StatCard(
                 title: "Success Rate",
                 value: formatPercent(viewModel.successRate),
                 icon: "checkmark.circle.fill",
-                color: viewModel.successRate > 0.95 ? .green : (viewModel.successRate > 0.8 ? .yellow : .red)
+                color: viewModel.successRate > 0.95 ? .nexusSuccess : (viewModel.successRate > 0.8 ? .nexusWarning : .nexusError)
             )
         }
         .padding(.horizontal)
@@ -91,6 +92,7 @@ struct UsageView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Cost Trend")
                     .font(.headline)
+                    .foregroundColor(.nexusText)
                     .padding(.horizontal)
                 
                 Chart(viewModel.costTrendData) { point in
@@ -98,7 +100,7 @@ struct UsageView: View {
                         x: .value("Date", point.date, unit: .day),
                         y: .value("Cost", point.costUsd)
                     )
-                    .foregroundStyle(.blue.gradient)
+                    .foregroundStyle(.nexusBlue.gradient)
                     .cornerRadius(4)
                 }
                 .chartYAxis {
@@ -129,6 +131,7 @@ struct UsageView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text("By Provider")
                 .font(.headline)
+                .foregroundColor(.nexusText)
                 .padding(.horizontal)
             
             ForEach(providers) { provider in
@@ -139,7 +142,7 @@ struct UsageView: View {
                             .fontWeight(.medium)
                         Text("\(formatCount(provider.requests)) requests · \(formatTokens(provider.inputTokens + provider.outputTokens)) tokens")
                             .font(.caption)
-                            .foregroundStyle(.secondary)
+                            .foregroundColor(.nexusMuted)
                     }
                     
                     Spacer()
@@ -151,7 +154,7 @@ struct UsageView: View {
                         if provider.errorRate > 0 {
                             Text("\(formatPercent(provider.errorRate)) errors")
                                 .font(.caption)
-                                .foregroundStyle(.red)
+                                .foregroundColor(.nexusError)
                         }
                     }
                 }
@@ -168,6 +171,7 @@ struct UsageView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text("By Model")
                 .font(.headline)
+                .foregroundColor(.nexusText)
                 .padding(.horizontal)
             
             ForEach(models.sorted(by: { $0.estimatedCostUsd > $1.estimatedCostUsd }).prefix(10)) { model in
@@ -179,7 +183,7 @@ struct UsageView: View {
                             .lineLimit(1)
                         Text("\(model.provider) · \(model.routeType)")
                             .font(.caption)
-                            .foregroundStyle(.secondary)
+                            .foregroundColor(.nexusMuted)
                     }
                     
                     Spacer()
@@ -190,7 +194,7 @@ struct UsageView: View {
                             .fontWeight(.semibold)
                         Text(formatTokens(model.inputTokens + model.outputTokens))
                             .font(.caption)
-                            .foregroundStyle(.secondary)
+                            .foregroundColor(.nexusMuted)
                     }
                 }
                 .padding(.horizontal)
@@ -208,13 +212,14 @@ struct UsageView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Monthly Projection")
                     .font(.headline)
+                    .foregroundColor(.nexusText)
                     .padding(.horizontal)
                 
                 VStack(spacing: 12) {
                     HStack {
                         Label("Month to Date", systemImage: "calendar")
                             .font(.subheadline)
-                            .foregroundStyle(.secondary)
+                            .foregroundColor(.nexusMuted)
                         Spacer()
                         Text(formatCost(projection.monthToDateCostUsd))
                             .font(.subheadline)
@@ -222,11 +227,12 @@ struct UsageView: View {
                     }
                     
                     Divider()
+                        .background(Color.nexusBorder)
                     
                     HStack {
                         Label("Daily Burn", systemImage: "flame")
                             .font(.subheadline)
-                            .foregroundStyle(.secondary)
+                            .foregroundColor(.nexusMuted)
                         Spacer()
                         Text("\(formatCost(projection.currentDailyBurnUsd))/day")
                             .font(.subheadline)
@@ -234,21 +240,26 @@ struct UsageView: View {
                     }
                     
                     Divider()
+                        .background(Color.nexusBorder)
                     
                     HStack {
                         Label("Projected End", systemImage: "chart.line.uptrend.xyaxis")
                             .font(.subheadline)
-                            .foregroundStyle(.secondary)
+                            .foregroundColor(.nexusMuted)
                         Spacer()
                         Text(formatCost(projection.projectedMonthEndCostUsd))
                             .font(.title3)
                             .fontWeight(.bold)
-                            .foregroundStyle(projection.projectedMonthEndCostUsd > 50 ? .red : .primary)
+                            .foregroundColor(projection.projectedMonthEndCostUsd > 50 ? .nexusError : .nexusText)
                     }
                 }
                 .padding()
-                .background(.ultraThinMaterial)
+                .background(Color.nexusSurface)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.nexusBorder, lineWidth: 1)
+                )
                 .padding(.horizontal)
             }
             .padding(.vertical, 8)
@@ -261,12 +272,13 @@ struct UsageView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Recent Workers")
                 .font(.headline)
+                .foregroundColor(.nexusText)
                 .padding(.horizontal)
             
             if viewModel.workerHistory.isEmpty {
                 Text("No recent worker runs")
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundColor(.nexusMuted)
                     .padding(.horizontal)
             } else {
                 ForEach(viewModel.workerHistory.prefix(20)) { run in
@@ -283,15 +295,21 @@ struct UsageView: View {
         VStack(spacing: 12) {
             Image(systemName: "exclamationmark.triangle")
                 .font(.largeTitle)
-                .foregroundStyle(.orange)
+                .foregroundColor(.nexusWarning)
             Text(error)
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .foregroundColor(.nexusMuted)
                 .multilineTextAlignment(.center)
             Button("Retry") {
                 Task { await viewModel.loadData() }
             }
-            .buttonStyle(.bordered)
+            .font(.subheadline)
+            .fontWeight(.medium)
+            .foregroundColor(.nexusNavy)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 8)
+            .background(Color.nexusTeal)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
         }
         .padding(.top, 40)
         .padding(.horizontal)
@@ -321,11 +339,15 @@ struct StatCard: View {
                 .minimumScaleFactor(0.7)
             Text(title)
                 .font(.caption)
-                .foregroundStyle(.secondary)
+                .foregroundColor(.nexusMuted)
         }
         .padding(12)
-        .background(.ultraThinMaterial)
+        .background(Color.nexusSurface)
         .clipShape(RoundedRectangle(cornerRadius: 12))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.nexusBorder, lineWidth: 1)
+        )
     }
 }
 
@@ -338,7 +360,7 @@ struct WorkerRunRow: View {
         HStack(spacing: 10) {
             // Agent type icon
             Image(systemName: agentIcon)
-                .foregroundStyle((run.succeeded ?? false) ? .green : .red)
+                .foregroundColor((run.succeeded ?? false) ? .nexusSuccess : .nexusError)
                 .frame(width: 24)
             
             VStack(alignment: .leading, spacing: 2) {
@@ -349,14 +371,14 @@ struct WorkerRunRow: View {
                 HStack(spacing: 6) {
                     Text(run.agentType)
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundColor(.nexusMuted)
                     
                     if let duration = runDuration {
                         Text("·")
-                            .foregroundStyle(.tertiary)
+                            .foregroundColor(.nexusMuted.opacity(0.6))
                         Text(formatDuration(duration))
                             .font(.caption)
-                            .foregroundStyle(.secondary)
+                            .foregroundColor(.nexusMuted)
                     }
                 }
             }
@@ -372,7 +394,7 @@ struct WorkerRunRow: View {
                 
                 Image(systemName: (run.succeeded ?? false) ? "checkmark.circle.fill" : "xmark.circle.fill")
                     .font(.caption)
-                    .foregroundStyle((run.succeeded ?? false) ? .green : .red)
+                    .foregroundColor((run.succeeded ?? false) ? .nexusSuccess : .nexusError)
             }
         }
         .padding(.horizontal)
