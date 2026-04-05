@@ -3,170 +3,280 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03894F8488DE33B5E4F1E6FC /* MemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45A326F0904E2E385F57EFA /* MemoryView.swift */; };
-		1F17484F2DB65A3F2F7B5684 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC36A38B9A503DE446CF7932 /* DashboardViewModel.swift */; };
-		281BBF2DC44E4D272E003513 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210EDEDC893D1DC85AD73B28 /* APIService.swift */; };
-		2AC5E6D80790BB10BB79B997 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90AE4161D931A2C054474DC /* ContentView.swift */; };
-		30E7D50FF74D149CB23496A7 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E81CA5FA563916A70733D6 /* DashboardView.swift */; };
-		312F6497863921645CD9627C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE04CB207FE1084E701035DA /* SettingsView.swift */; };
-		39369ABFAC05744258D33EEF /* LobsMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04D45378984545F7CC19D4 /* LobsMobileApp.swift */; };
-		60C5E82113E645D0B3152772 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354D4B9FC627160C2B61A4DC /* CalendarViewModel.swift */; };
-		61E595C3E4A495EB415CF3D4 /* MemoryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB9468CF56C190CC98E2531 /* MemoryModels.swift */; };
-		6F9B109A198FF1C846113054 /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCD4F2EED208C2AAD9F86FE /* APIModels.swift */; };
-		8358024BB5BBAC28EF419DAC /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BCFAF17DEC90EB28EEC307 /* TasksViewModel.swift */; };
-		861D5ECC8B8EF47C93DB906B /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375AD7C643B9B867FEA21BDA /* ChatViewModel.swift */; };
-		87F7BFD0F77A479C5E8B132E /* StatusModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255395E0F54E53D6BC817DFD /* StatusModels.swift */; };
-		9B9ECEA0D5A3FFBBEC30F157 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A147507CACDE4D4B038C59 /* ChatView.swift */; };
-		A5AFE7B587E9F435AB12808D /* InboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE6E9E6202CC6786FD4A3B5 /* InboxViewModel.swift */; };
-		AD0D054107B18C86512C2469 /* ChatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00353F5607CAF2FAC1029811 /* ChatModels.swift */; };
-		B28362218131034DBF60D338 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A22DB050E2A8076D627BB /* ChatService.swift */; };
-		B7AA4A9F081C5CD552DF4281 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729E55862FE4EEE1FA74C1BE /* CalendarView.swift */; };
-		CA970E41DDC17771C39D5199 /* MemoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B14371A8CF34C9BEC31A87 /* MemoryViewModel.swift */; };
-		F7E2C40BB0A83A4FA214D224 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4FEB592ED08F50AC2FFF5 /* TasksView.swift */; };
-		FF2CA2A2FDD9B07C16864ED0 /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A6ACFADC8A6E5FF561E6BE /* InboxView.swift */; };
+		AA000001000000000000001A /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000001000000000000001A /* APIModels.swift */; };
+		AA000002000000000000001A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002000000000000001A /* APIService.swift */; };
+		AA000003000000000000001A /* APIService+Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000003000000000000001A /* APIService+Usage.swift */; };
+		AA000004000000000000001A /* APIUsageModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000004000000000000001A /* APIUsageModels.swift */; };
+		AA000005000000000000001A /* ChatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000005000000000000001A /* ChatModels.swift */; };
+		AA000006000000000000001A /* MemoryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000006000000000000001A /* MemoryModels.swift */; };
+		AA000007000000000000001A /* StatusModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000007000000000000001A /* StatusModels.swift */; };
+		AA000008000000000000001A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000008000000000000001A /* ContentView.swift */; };
+		AA000009000000000000001A /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000009000000000000001A /* Formatters.swift */; };
+		AA00000A000000000000001A /* LobsMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB00000A000000000000001A /* LobsMobileApp.swift */; };
+		AA00000B000000000000001A /* EventSourceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB00000B000000000000001A /* EventSourceClient.swift */; };
+		AA00000C000000000000001A /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB00000C000000000000001A /* ChatService.swift */; };
+		AA00000D000000000000001A /* CloudflareAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB00000D000000000000001A /* CloudflareAuthService.swift */; };
+		AA00000E000000000000001A /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB00000E000000000000001A /* CalendarViewModel.swift */; };
+		AA00000F000000000000001A /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB00000F000000000000001A /* ChatViewModel.swift */; };
+		AA000010000000000000001A /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000010000000000000001A /* DashboardViewModel.swift */; };
+		AA000011000000000000001A /* InboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000011000000000000001A /* InboxViewModel.swift */; };
+		AA000012000000000000001A /* MemoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000012000000000000001A /* MemoryViewModel.swift */; };
+		AA000013000000000000001A /* ProjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000013000000000000001A /* ProjectsViewModel.swift */; };
+		AA000014000000000000001A /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000014000000000000001A /* TasksViewModel.swift */; };
+		AA000015000000000000001A /* UsageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000015000000000000001A /* UsageViewModel.swift */; };
+		AA000016000000000000001A /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000016000000000000001A /* CalendarView.swift */; };
+		AA000017000000000000001A /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000017000000000000001A /* ChatView.swift */; };
+		AA000018000000000000001A /* ChatMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000018000000000000001A /* ChatMessageView.swift */; };
+		AA000019000000000000001A /* MarkdownText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000019000000000000001A /* MarkdownText.swift */; };
+		AA00001A000000000000001A /* ToolCallCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB00001A000000000000001A /* ToolCallCard.swift */; };
+		AA00001B000000000000001A /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB00001B000000000000001A /* DashboardView.swift */; };
+		AA00001C000000000000001A /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB00001C000000000000001A /* InboxView.swift */; };
+		AA00001D000000000000001A /* MemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB00001D000000000000001A /* MemoryView.swift */; };
+		AA00001E000000000000001A /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB00001E000000000000001A /* MoreView.swift */; };
+		AA00001F000000000000001A /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB00001F000000000000001A /* ProjectsView.swift */; };
+		AA000020000000000000001A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000020000000000000001A /* SettingsView.swift */; };
+		AA000021000000000000001A /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000021000000000000001A /* TasksView.swift */; };
+		AA000022000000000000001A /* UsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000022000000000000001A /* UsageView.swift */; };
+		CC000001000000000000001A /* ServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD000001000000000000001A /* ServicesTests.swift */; };
+		CC000002000000000000001A /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD000002000000000000001A /* ViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		EE000001000000000000001A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA111111000000000000001A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA222222000000000000001A /* LobsMobile */;
+			remoteInfo = LobsMobile;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		00353F5607CAF2FAC1029811 /* ChatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModels.swift; sourceTree = "<group>"; };
-		210EDEDC893D1DC85AD73B28 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		255395E0F54E53D6BC817DFD /* StatusModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModels.swift; sourceTree = "<group>"; };
-		28BCFAF17DEC90EB28EEC307 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
-		354D4B9FC627160C2B61A4DC /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
-		375AD7C643B9B867FEA21BDA /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
-		43A6ACFADC8A6E5FF561E6BE /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
-		70E81CA5FA563916A70733D6 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
-		729E55862FE4EEE1FA74C1BE /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		81838572FEF51AC0BF0EF499 /* LobsMobile.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LobsMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		861A22DB050E2A8076D627BB /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
-		9B04D45378984545F7CC19D4 /* LobsMobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobsMobileApp.swift; sourceTree = "<group>"; };
-		ADA4FEB592ED08F50AC2FFF5 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
-		BDCD4F2EED208C2AAD9F86FE /* APIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
-		D45A326F0904E2E385F57EFA /* MemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryView.swift; sourceTree = "<group>"; };
-		DE04CB207FE1084E701035DA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		E1A147507CACDE4D4B038C59 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		EBE6E9E6202CC6786FD4A3B5 /* InboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewModel.swift; sourceTree = "<group>"; };
-		EC36A38B9A503DE446CF7932 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
-		ECB9468CF56C190CC98E2531 /* MemoryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryModels.swift; sourceTree = "<group>"; };
-		F1B14371A8CF34C9BEC31A87 /* MemoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryViewModel.swift; sourceTree = "<group>"; };
-		F90AE4161D931A2C054474DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BB000001000000000000001A /* APIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
+		BB000002000000000000001A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		BB000003000000000000001A /* APIService+Usage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIService+Usage.swift"; sourceTree = "<group>"; };
+		BB000004000000000000001A /* APIUsageModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUsageModels.swift; sourceTree = "<group>"; };
+		BB000005000000000000001A /* ChatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModels.swift; sourceTree = "<group>"; };
+		BB000006000000000000001A /* MemoryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryModels.swift; sourceTree = "<group>"; };
+		BB000007000000000000001A /* StatusModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModels.swift; sourceTree = "<group>"; };
+		BB000008000000000000001A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BB000009000000000000001A /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		BB00000A000000000000001A /* LobsMobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobsMobileApp.swift; sourceTree = "<group>"; };
+		BB00000B000000000000001A /* EventSourceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSourceClient.swift; sourceTree = "<group>"; };
+		BB00000C000000000000001A /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
+		BB00000D000000000000001A /* CloudflareAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudflareAuthService.swift; sourceTree = "<group>"; };
+		BB00000E000000000000001A /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		BB00000F000000000000001A /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		BB000010000000000000001A /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		BB000011000000000000001A /* InboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewModel.swift; sourceTree = "<group>"; };
+		BB000012000000000000001A /* MemoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryViewModel.swift; sourceTree = "<group>"; };
+		BB000013000000000000001A /* ProjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModel.swift; sourceTree = "<group>"; };
+		BB000014000000000000001A /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
+		BB000015000000000000001A /* UsageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageViewModel.swift; sourceTree = "<group>"; };
+		BB000016000000000000001A /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		BB000017000000000000001A /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		BB000018000000000000001A /* ChatMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageView.swift; sourceTree = "<group>"; };
+		BB000019000000000000001A /* MarkdownText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownText.swift; sourceTree = "<group>"; };
+		BB00001A000000000000001A /* ToolCallCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolCallCard.swift; sourceTree = "<group>"; };
+		BB00001B000000000000001A /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		BB00001C000000000000001A /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
+		BB00001D000000000000001A /* MemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryView.swift; sourceTree = "<group>"; };
+		BB00001E000000000000001A /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
+		BB00001F000000000000001A /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
+		BB000020000000000000001A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		BB000021000000000000001A /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
+		BB000022000000000000001A /* UsageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageView.swift; sourceTree = "<group>"; };
+		BB000099000000000000001A /* LobsMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LobsMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD000001000000000000001A /* ServicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTests.swift; sourceTree = "<group>"; };
+		DD000002000000000000001A /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
+		DD000099000000000000001A /* LobsMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LobsMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		1517901E754538D9D868A581 /* Products */ = {
+		AA000099000000000000001A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				81838572FEF51AC0BF0EF499 /* LobsMobile.app */,
+				BB000099000000000000001A /* LobsMobile.app */,
+				DD000099000000000000001A /* LobsMobileTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3FD02156F601561F34AC591C = {
+		AA000100000000000000001A /* LobsMobile */ = {
 			isa = PBXGroup;
 			children = (
-				A391FBF2CEA7A6561465659B /* LobsMobile */,
-				1517901E754538D9D868A581 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		5081DB05321BD5FF30CA9787 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				861A22DB050E2A8076D627BB /* ChatService.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		7F2595BFEEC9A12C2D1FDFD8 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				BDCD4F2EED208C2AAD9F86FE /* APIModels.swift */,
-				210EDEDC893D1DC85AD73B28 /* APIService.swift */,
-				00353F5607CAF2FAC1029811 /* ChatModels.swift */,
-				ECB9468CF56C190CC98E2531 /* MemoryModels.swift */,
-				255395E0F54E53D6BC817DFD /* StatusModels.swift */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
-		902F0313EC8A4647461D3DA0 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				354D4B9FC627160C2B61A4DC /* CalendarViewModel.swift */,
-				375AD7C643B9B867FEA21BDA /* ChatViewModel.swift */,
-				EC36A38B9A503DE446CF7932 /* DashboardViewModel.swift */,
-				EBE6E9E6202CC6786FD4A3B5 /* InboxViewModel.swift */,
-				F1B14371A8CF34C9BEC31A87 /* MemoryViewModel.swift */,
-				28BCFAF17DEC90EB28EEC307 /* TasksViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		A391FBF2CEA7A6561465659B /* LobsMobile */ = {
-			isa = PBXGroup;
-			children = (
-				F90AE4161D931A2C054474DC /* ContentView.swift */,
-				9B04D45378984545F7CC19D4 /* LobsMobileApp.swift */,
-				7F2595BFEEC9A12C2D1FDFD8 /* API */,
-				5081DB05321BD5FF30CA9787 /* Services */,
-				902F0313EC8A4647461D3DA0 /* ViewModels */,
-				DE4B084E9358A5725A3252AE /* Views */,
+				BB000008000000000000001A /* ContentView.swift */,
+				BB00000A000000000000001A /* LobsMobileApp.swift */,
+				AA000101000000000000001A /* API */,
+				AA000102000000000000001A /* Helpers */,
+				AA000103000000000000001A /* Networking */,
+				AA000104000000000000001A /* Services */,
+				AA000105000000000000001A /* ViewModels */,
+				AA000106000000000000001A /* Views */,
 			);
 			path = LobsMobile;
 			sourceTree = "<group>";
 		};
-		DE4B084E9358A5725A3252AE /* Views */ = {
+		AA000101000000000000001A /* API */ = {
 			isa = PBXGroup;
 			children = (
-				729E55862FE4EEE1FA74C1BE /* CalendarView.swift */,
-				E1A147507CACDE4D4B038C59 /* ChatView.swift */,
-				70E81CA5FA563916A70733D6 /* DashboardView.swift */,
-				43A6ACFADC8A6E5FF561E6BE /* InboxView.swift */,
-				D45A326F0904E2E385F57EFA /* MemoryView.swift */,
-				DE04CB207FE1084E701035DA /* SettingsView.swift */,
-				ADA4FEB592ED08F50AC2FFF5 /* TasksView.swift */,
+				BB000001000000000000001A /* APIModels.swift */,
+				BB000002000000000000001A /* APIService.swift */,
+				BB000003000000000000001A /* APIService+Usage.swift */,
+				BB000004000000000000001A /* APIUsageModels.swift */,
+				BB000005000000000000001A /* ChatModels.swift */,
+				BB000006000000000000001A /* MemoryModels.swift */,
+				BB000007000000000000001A /* StatusModels.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		AA000102000000000000001A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BB000009000000000000001A /* Formatters.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		AA000103000000000000001A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				BB00000B000000000000001A /* EventSourceClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		AA000104000000000000001A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BB00000C000000000000001A /* ChatService.swift */,
+				BB00000D000000000000001A /* CloudflareAuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AA000105000000000000001A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BB00000E000000000000001A /* CalendarViewModel.swift */,
+				BB00000F000000000000001A /* ChatViewModel.swift */,
+				BB000010000000000000001A /* DashboardViewModel.swift */,
+				BB000011000000000000001A /* InboxViewModel.swift */,
+				BB000012000000000000001A /* MemoryViewModel.swift */,
+				BB000013000000000000001A /* ProjectsViewModel.swift */,
+				BB000014000000000000001A /* TasksViewModel.swift */,
+				BB000015000000000000001A /* UsageViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		AA000106000000000000001A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BB000016000000000000001A /* CalendarView.swift */,
+				BB000017000000000000001A /* ChatView.swift */,
+				AA000107000000000000001A /* Components */,
+				BB00001B000000000000001A /* DashboardView.swift */,
+				BB00001C000000000000001A /* InboxView.swift */,
+				BB00001D000000000000001A /* MemoryView.swift */,
+				BB00001E000000000000001A /* MoreView.swift */,
+				BB00001F000000000000001A /* ProjectsView.swift */,
+				BB000020000000000000001A /* SettingsView.swift */,
+				BB000021000000000000001A /* TasksView.swift */,
+				BB000022000000000000001A /* UsageView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AA000107000000000000001A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				BB000018000000000000001A /* ChatMessageView.swift */,
+				BB000019000000000000001A /* MarkdownText.swift */,
+				BB00001A000000000000001A /* ToolCallCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AA000200000000000000001A /* LobsMobileTests */ = {
+			isa = PBXGroup;
+			children = (
+				DD000001000000000000001A /* ServicesTests.swift */,
+				DD000002000000000000001A /* ViewModelTests.swift */,
+			);
+			path = LobsMobileTests;
+			sourceTree = "<group>";
+		};
+		AA000000000000000000001A = {
+			isa = PBXGroup;
+			children = (
+				AA000100000000000000001A /* LobsMobile */,
+				AA000200000000000000001A /* LobsMobileTests */,
+				AA000099000000000000001A /* Products */,
+			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2BA91CC25DFCC6601CFF5999 /* LobsMobile */ = {
+		AA222222000000000000001A /* LobsMobile */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 459094E440155B89D40662B2 /* Build configuration list for PBXNativeTarget "LobsMobile" */;
+			buildConfigurationList = FF000001000000000000001A /* Build configuration list for PBXNativeTarget "LobsMobile" */;
 			buildPhases = (
-				86656EEFAE7DB0D91A9B6D0E /* Sources */,
+				AA333333000000000000001A /* Sources */,
+				AA444444000000000000001A /* Frameworks */,
+				AA555555000000000000001A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = LobsMobile;
-			packageProductDependencies = (
-			);
 			productName = LobsMobile;
-			productReference = 81838572FEF51AC0BF0EF499 /* LobsMobile.app */;
+			productReference = BB000099000000000000001A /* LobsMobile.app */;
 			productType = "com.apple.product-type.application";
+		};
+		AA666666000000000000001A /* LobsMobileTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF000002000000000000001A /* Build configuration list for PBXNativeTarget "LobsMobileTests" */;
+			buildPhases = (
+				AA777777000000000000001A /* Sources */,
+				AA888888000000000000001A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA999999000000000000001A /* PBXTargetDependency */,
+			);
+			name = LobsMobileTests;
+			productName = LobsMobileTests;
+			productReference = DD000099000000000000001A /* LobsMobileTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A2D63E0AB851FF8C8B1AFD20 /* Project object */ = {
+		AA111111000000000000001A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
-					2BA91CC25DFCC6601CFF5999 = {
+					AA222222000000000000001A = {
 						DevelopmentTeam = "";
+					};
+					AA666666000000000000001A = {
+						DevelopmentTeam = "";
+						TestTargetID = AA222222000000000000001A;
 					};
 				};
 			};
-			buildConfigurationList = E25042AB5907FEF5A35B504A /* Build configuration list for PBXProject "LobsMobile" */;
+			buildConfigurationList = FF000000000000000000001A /* Build configuration list for PBXProject "LobsMobile" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -174,50 +284,108 @@
 				Base,
 				en,
 			);
-			mainGroup = 3FD02156F601561F34AC591C;
+			mainGroup = AA000000000000000000001A;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
+			preferredProjectObjectVersion = 56;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2BA91CC25DFCC6601CFF5999 /* LobsMobile */,
+				AA222222000000000000001A /* LobsMobile */,
+				AA666666000000000000001A /* LobsMobileTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		86656EEFAE7DB0D91A9B6D0E /* Sources */ = {
+		AA333333000000000000001A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F9B109A198FF1C846113054 /* APIModels.swift in Sources */,
-				281BBF2DC44E4D272E003513 /* APIService.swift in Sources */,
-				B7AA4A9F081C5CD552DF4281 /* CalendarView.swift in Sources */,
-				60C5E82113E645D0B3152772 /* CalendarViewModel.swift in Sources */,
-				AD0D054107B18C86512C2469 /* ChatModels.swift in Sources */,
-				B28362218131034DBF60D338 /* ChatService.swift in Sources */,
-				9B9ECEA0D5A3FFBBEC30F157 /* ChatView.swift in Sources */,
-				861D5ECC8B8EF47C93DB906B /* ChatViewModel.swift in Sources */,
-				2AC5E6D80790BB10BB79B997 /* ContentView.swift in Sources */,
-				30E7D50FF74D149CB23496A7 /* DashboardView.swift in Sources */,
-				1F17484F2DB65A3F2F7B5684 /* DashboardViewModel.swift in Sources */,
-				FF2CA2A2FDD9B07C16864ED0 /* InboxView.swift in Sources */,
-				A5AFE7B587E9F435AB12808D /* InboxViewModel.swift in Sources */,
-				39369ABFAC05744258D33EEF /* LobsMobileApp.swift in Sources */,
-				61E595C3E4A495EB415CF3D4 /* MemoryModels.swift in Sources */,
-				03894F8488DE33B5E4F1E6FC /* MemoryView.swift in Sources */,
-				CA970E41DDC17771C39D5199 /* MemoryViewModel.swift in Sources */,
-				312F6497863921645CD9627C /* SettingsView.swift in Sources */,
-				87F7BFD0F77A479C5E8B132E /* StatusModels.swift in Sources */,
-				F7E2C40BB0A83A4FA214D224 /* TasksView.swift in Sources */,
-				8358024BB5BBAC28EF419DAC /* TasksViewModel.swift in Sources */,
+				AA000001000000000000001A /* APIModels.swift in Sources */,
+				AA000002000000000000001A /* APIService.swift in Sources */,
+				AA000003000000000000001A /* APIService+Usage.swift in Sources */,
+				AA000004000000000000001A /* APIUsageModels.swift in Sources */,
+				AA000005000000000000001A /* ChatModels.swift in Sources */,
+				AA000006000000000000001A /* MemoryModels.swift in Sources */,
+				AA000007000000000000001A /* StatusModels.swift in Sources */,
+				AA000008000000000000001A /* ContentView.swift in Sources */,
+				AA000009000000000000001A /* Formatters.swift in Sources */,
+				AA00000A000000000000001A /* LobsMobileApp.swift in Sources */,
+				AA00000B000000000000001A /* EventSourceClient.swift in Sources */,
+				AA00000C000000000000001A /* ChatService.swift in Sources */,
+				AA00000D000000000000001A /* CloudflareAuthService.swift in Sources */,
+				AA00000E000000000000001A /* CalendarViewModel.swift in Sources */,
+				AA00000F000000000000001A /* ChatViewModel.swift in Sources */,
+				AA000010000000000000001A /* DashboardViewModel.swift in Sources */,
+				AA000011000000000000001A /* InboxViewModel.swift in Sources */,
+				AA000012000000000000001A /* MemoryViewModel.swift in Sources */,
+				AA000013000000000000001A /* ProjectsViewModel.swift in Sources */,
+				AA000014000000000000001A /* TasksViewModel.swift in Sources */,
+				AA000015000000000000001A /* UsageViewModel.swift in Sources */,
+				AA000016000000000000001A /* CalendarView.swift in Sources */,
+				AA000017000000000000001A /* ChatView.swift in Sources */,
+				AA000018000000000000001A /* ChatMessageView.swift in Sources */,
+				AA000019000000000000001A /* MarkdownText.swift in Sources */,
+				AA00001A000000000000001A /* ToolCallCard.swift in Sources */,
+				AA00001B000000000000001A /* DashboardView.swift in Sources */,
+				AA00001C000000000000001A /* InboxView.swift in Sources */,
+				AA00001D000000000000001A /* MemoryView.swift in Sources */,
+				AA00001E000000000000001A /* MoreView.swift in Sources */,
+				AA00001F000000000000001A /* ProjectsView.swift in Sources */,
+				AA000020000000000000001A /* SettingsView.swift in Sources */,
+				AA000021000000000000001A /* TasksView.swift in Sources */,
+				AA000022000000000000001A /* UsageView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA777777000000000000001A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC000001000000000000001A /* ServicesTests.swift in Sources */,
+				CC000002000000000000001A /* ViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXFrameworksBuildPhase section */
+		AA444444000000000000001A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA888888000000000000001A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA555555000000000000001A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA999999000000000000001A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA222222000000000000001A /* LobsMobile */;
+			targetProxy = EE000001000000000000001A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		19AD20C4AD8B2510220CD87F /* Debug */ = {
+		FF000010000000000000001A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -275,61 +443,14 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.9;
 			};
 			name = Debug;
 		};
-		2318D59F8B1AF4E6F185C397 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_GENERATION_MODE = GeneratedFile;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lobsai.mobile;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		6A5BBEBB6129B447DFBC7D9D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_GENERATION_MODE = GeneratedFile;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lobsai.mobile;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D42781ABEAE4ED89E5568E9A /* Release */ = {
+		FF000011000000000000001A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -380,34 +501,138 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.9;
 			};
 			name = Release;
 		};
+		FF000020000000000000001A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_GENERATION_MODE = GeneratedFile;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lobsai.mobile;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FF000021000000000000001A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_GENERATION_MODE = GeneratedFile;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lobsai.mobile;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FF000030000000000000001A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lobsai.mobile.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LobsMobile.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LobsMobile";
+			};
+			name = Debug;
+		};
+		FF000031000000000000001A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lobsai.mobile.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LobsMobile.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LobsMobile";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		459094E440155B89D40662B2 /* Build configuration list for PBXNativeTarget "LobsMobile" */ = {
+		FF000000000000000000001A /* Build configuration list for PBXProject "LobsMobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2318D59F8B1AF4E6F185C397 /* Debug */,
-				6A5BBEBB6129B447DFBC7D9D /* Release */,
+				FF000010000000000000001A /* Debug */,
+				FF000011000000000000001A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
-		E25042AB5907FEF5A35B504A /* Build configuration list for PBXProject "LobsMobile" */ = {
+		FF000001000000000000001A /* Build configuration list for PBXNativeTarget "LobsMobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				19AD20C4AD8B2510220CD87F /* Debug */,
-				D42781ABEAE4ED89E5568E9A /* Release */,
+				FF000020000000000000001A /* Debug */,
+				FF000021000000000000001A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
+		};
+		FF000002000000000000001A /* Build configuration list for PBXNativeTarget "LobsMobileTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF000030000000000000001A /* Debug */,
+				FF000031000000000000001A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A2D63E0AB851FF8C8B1AFD20 /* Project object */;
+	rootObject = AA111111000000000000001A /* Project object */;
 }
