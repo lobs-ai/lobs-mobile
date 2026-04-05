@@ -110,6 +110,7 @@ enum APIError: Error, LocalizedError {
 final class APIService {
   let baseURL: URL
   var apiToken: String?
+  var cfToken: String?
   
   init(baseURL: URL, apiToken: String? = nil) {
     self.baseURL = baseURL
@@ -180,6 +181,11 @@ final class APIService {
     if let token = apiToken {
       req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
     }
+
+    // Add Cloudflare Access cookie if present
+    if let cfToken = cfToken {
+      req.setValue("CF_Authorization=\(cfToken)", forHTTPHeaderField: "Cookie")
+    }
     
     if let body = body {
       do {
@@ -238,6 +244,11 @@ final class APIService {
     // Add authorization header if token is present
     if let token = apiToken {
       req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+    }
+
+    // Add Cloudflare Access cookie if present
+    if let cfToken = cfToken {
+      req.setValue("CF_Authorization=\(cfToken)", forHTTPHeaderField: "Cookie")
     }
     
     if let body = body {

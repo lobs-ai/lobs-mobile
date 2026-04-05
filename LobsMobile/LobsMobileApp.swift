@@ -17,6 +17,12 @@ class AppState: ObservableObject {
     @Published var serverURL: String
     @Published var apiToken: String
     @Published var apiService: APIService?
+    @Published var cloudflareAuth = CloudflareAuthService()
+    
+    /// Whether the current server URL requires Cloudflare Access auth
+    var needsCloudflareAuth: Bool {
+        CloudflareAuthService.needsCloudflareAuth(serverURL: serverURL)
+    }
     
     init() {
         // Load from UserDefaults
@@ -27,6 +33,9 @@ class AppState: ObservableObject {
         if let service = try? APIService(baseURLString: serverURL, apiToken: apiToken) {
             self.apiService = service
         }
+        
+        // Sync CF token to API service
+        syncCFToken()
     }
     
     func updateServerURL(_ url: String) {
@@ -41,8 +50,14 @@ class AppState: ObservableObject {
         updateAPIService()
     }
     
+    /// Sync the CF token from CloudflareAuthService to the APIService
+    func syncCFToken() {
+        apiService?.cfToken = cloudflareAuth.cfToken
+    }
+    
     private func updateAPIService() {
         if let service = try? APIService(baseURLString: serverURL, apiToken: apiToken) {
+            service.cfToken = cloudflareAuth.cfToken
             self.apiService = service
         }
     }

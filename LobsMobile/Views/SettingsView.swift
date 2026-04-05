@@ -48,6 +48,54 @@ struct SettingsView: View {
                     connectionStatusText
                 }
                 
+                // Cloudflare Access section — only shown for *.lobslab.com servers
+                if appState.needsCloudflareAuth {
+                    Section("Cloudflare Access") {
+                        HStack {
+                            Text("Status")
+                            Spacer()
+                            if appState.cloudflareAuth.isAuthenticated {
+                                Label("Authenticated", systemImage: "checkmark.circle.fill")
+                                    .foregroundStyle(.green)
+                                    .font(.subheadline)
+                            } else {
+                                Label("Not Authenticated", systemImage: "xmark.circle.fill")
+                                    .foregroundStyle(.red)
+                                    .font(.subheadline)
+                            }
+                        }
+                        
+                        if appState.cloudflareAuth.isAuthenticated {
+                            Button(role: .destructive) {
+                                appState.cloudflareAuth.logout()
+                                appState.syncCFToken()
+                            } label: {
+                                Label("Sign Out of Cloudflare", systemImage: "rectangle.portrait.and.arrow.right")
+                            }
+                        } else {
+                            Button {
+                                appState.cloudflareAuth.loginDirect(serverURL: serverURL)
+                            } label: {
+                                HStack {
+                                    Label("Sign In with Cloudflare", systemImage: "lock.shield")
+                                    Spacer()
+                                    if appState.cloudflareAuth.isAuthenticating {
+                                        ProgressView()
+                                    }
+                                }
+                            }
+                            .disabled(appState.cloudflareAuth.isAuthenticating || serverURL.isEmpty)
+                        }
+                    } footer: {
+                        if let error = appState.cloudflareAuth.error {
+                            Text(error)
+                                .foregroundStyle(.red)
+                        } else {
+                            Text("Required for servers behind Cloudflare Access. Opens a browser for authentication.")
+                        }
+                    }
+                }
+                
                 Section("Actions") {
                     Button("Save Settings") {
                         saveSettings()
@@ -75,6 +123,9 @@ struct SettingsView: View {
             .onAppear {
                 serverURL = appState.serverURL
                 apiToken = appState.apiToken
+            }
+            .onChange(of: appState.cloudflareAuth.cfToken) {
+                appState.syncCFToken()
             }
         }
     }
@@ -123,6 +174,7 @@ struct SettingsView: View {
     private func saveSettings() {
         appState.updateServerURL(serverURL)
         appState.updateAPIToken(apiToken)
+        appState.syncCFToken()
         connectionStatus = .unknown
     }
 }
