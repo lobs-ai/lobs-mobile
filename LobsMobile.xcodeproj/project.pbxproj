@@ -43,6 +43,7 @@
 		AA000022000000000000001A /* UsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000022000000000000001A /* UsageView.swift */; };
 		CC000001000000000000001A /* ServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD000001000000000000001A /* ServicesTests.swift */; };
 		CC000002000000000000001A /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD000002000000000000001A /* ViewModelTests.swift */; };
+		CC000003000000000000001A /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD000003000000000000001A /* ModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		BB000099000000000000001A /* LobsMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LobsMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD000001000000000000001A /* ServicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTests.swift; sourceTree = "<group>"; };
 		DD000002000000000000001A /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
+		DD000003000000000000001A /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		DD000099000000000000001A /* LobsMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LobsMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -234,6 +236,7 @@
 			children = (
 				DD000001000000000000001A /* ServicesTests.swift */,
 				DD000002000000000000001A /* ViewModelTests.swift */,
+				DD000003000000000000001A /* ModelTests.swift */,
 			);
 			path = LobsMobileTests;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 			files = (
 				CC000001000000000000001A /* ServicesTests.swift in Sources */,
 				CC000002000000000000001A /* ViewModelTests.swift in Sources */,
+				CC000003000000000000001A /* ModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
